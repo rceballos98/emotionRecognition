@@ -1,0 +1,29 @@
+function [deapData] = makeDEAPstruct(path)
+path = 'C:\\Users\\NYUAD\\Desktop\\CRB\\DEAP\\data\\';
+deapData = struct();
+
+for i = 1:32
+    disp(i);
+    if(i < 10)
+        subject = load(strcat(path, 's0', num2str(i), '.mat'));
+    else
+        subject = load(strcat(path, 's', num2str(i), '.mat'));
+    end
+    subjectID = strcat('s', num2str(i));
+    for v = 1:40.0
+        videoID = strcat('v', num2str(v));
+        deapData.(subjectID).(videoID).labels = subject.labels();
+        deapData.(subjectID).(videoID).data = ...
+            struct('eeg', squeeze(subject.data(v,1:32,:)),...
+            'other',squeeze(subject.data(v,33:40,:)));
+    end 
+end
+
+end
+
+%EEG.data = deapData.s4.v6.data.eeg
+
+%save(strcat(path,'deapData.'), 'deapData', '-v7.3');
+     
+    
+    

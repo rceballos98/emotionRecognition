@@ -1,0 +1,10 @@
+function [sub] = getFeaturesFromSubject(sub)
+
+% Iterate over each video
+vidNames = fieldnames(sub);
+for i = 1:size(vidNames)
+  vid =  sub.(char(vidNames(i)));
+  vid.fb = freqBands(vid.data, FS, BANDS);
+  vid.features = extractFeatures(vid);
+  
+end

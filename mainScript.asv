@@ -1,0 +1,10 @@
+%% Get deapData
+path = 'T:\\CRB\\DEAP\\data\\';
+deapData = makeDEAPstruct(path);
+
+%Initialize EEG Var
+% EEG = pop_importdata('dataformat','matlab',...
+%     'nbchan',32,'data','T:\\CRB\\DEAP\\s01_1.mat',...
+%     'srate',128,'subject','s1','pnts',0,'xmin',0,'session',[]);
+
+%% Get freq data
