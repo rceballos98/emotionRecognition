@@ -1,4 +1,4 @@
-function  [features] = extractFeatures(psdVal, mappings)
+function  [features] = extractFeaturesFromPSD(psdVal, mappings)
 % input is a power spectrum density (PSD) array - one value per channel and
 % per frequency band
 
@@ -47,7 +47,7 @@ features.asm = reshape(temp,[nAssymPairs,nBands,2]);
 % 6.differential caudality (DCAU)
 features.dcau = zeros(nCaudPairs, nBands);
 for i=1:nCaudPairs
-    disp(caudPairs{i,1})
+    %disp(caudPairs{i,1})
     front = channelMap(caudPairs{i,1});
     back = channelMap(caudPairs{i,2});    
     features.dcau(i,:) = features.de(front,:) - features.de(back,:);

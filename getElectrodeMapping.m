@@ -1,3 +1,4 @@
+function [mappings] = getElectrodeMapping()
 mappings = struct();
 
 % Electrode/Channel Mapping
@@ -21,4 +22,4 @@ mappings.caudPairs = {'FC5' 'CP5'; 'FC1' 'CP1'; 'FC2' 'CP2'; 'FC6' 'CP6'; ...
     'F7' 'P7'; 'F3' 'P3'; 'Fz' 'Pz'; 'F4' 'P4'; 'F8' 'P8'; ...
     'Fp1' 'O1'; 'Fp2' 'O2'};
 
-
+end

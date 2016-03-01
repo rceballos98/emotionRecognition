@@ -1,6 +1,10 @@
-function [sub] = addFeaturesToSubject(sub, FS, BANDS)
+function [sub] = addFeaturesToSubject(sub, info)
 
 % Iterate over each video
+FS = info.fs;
+BANDS = info.bands;
+eMAP = info.mapping;
+
 vidNames = fieldnames(sub);
 for i = 1:size(vidNames)
   % Get video
@@ -9,9 +13,8 @@ for i = 1:size(vidNames)
   % add freq analysis
   vid.fb = freqBands(vid.data.eeg, FS, BANDS);
   
-  %%KEEP WORKING
   % add features
-  vid.features = extractFeatures(vid.fb.f.pbc,%add mappings );
+  vid.features = extractFeatures(vid.fb.f.pbc,eMAP);
   
   % Save changes
   sub.(char(vidNames(i))) = vid;
